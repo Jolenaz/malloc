@@ -1,3 +1,3 @@
-void free(){
+void freeL(){
     
 }
