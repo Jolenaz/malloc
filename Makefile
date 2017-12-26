@@ -16,7 +16,8 @@ INC_FILES = malloc.h
 SRC_DIR = ./srcs/
 SRC_FILES = malloc.c \
 			free.c \
-			realloc.c 
+			realloc.c \
+			tools.c
 
 OBJ_DIR = ./obj/
 OBJ_FILES = $(SRC_FILES:.c=.o)

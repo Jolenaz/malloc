@@ -1,7 +1,11 @@
 
-#include <unistd.h>
+#include "main.h"
+
 int main(){
-    write(1, "je suis en vie\n", 16 );
+
+	mallocL(10);
+	mallocL(10);
+	
 return 0;
 
 
