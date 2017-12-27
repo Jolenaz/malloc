@@ -2,5 +2,10 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": false,
     "editor.tabCompletion": true,
-    "editor.detectIndentation": false
+	"editor.detectIndentation": false,
+	"files.associations": {
+		"malloc.h": "c"
+	},
+	"C_Cpp.intelliSenseEngineFallback": "Disabled",
+	"C_Cpp.errorSquiggles": "Disabled"
 }

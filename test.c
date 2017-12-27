@@ -3,8 +3,8 @@
 
 int main(){
 
-	mallocL(10);
-	mallocL(10);
+	malloc_l(10);
+	malloc_l(10);
 	
 return 0;
 

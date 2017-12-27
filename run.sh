@@ -2,7 +2,7 @@
 export DYLD_LIBRARY_PATH=.
 export DYLD_INSERT_LIBRARIES="libft_malloc.so"
 export DYLD_FORCE_FLAT_NAMESPACE=1
-gcc -o test test.c srcs/*.c  -I includes
+gcc -o test test.c srcs/*.c -I includes
 /usr/bin/time -l ./test
 rm -rf test
 

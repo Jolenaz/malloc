@@ -12,18 +12,39 @@
 
 #include "malloc.h"
 
-t_book book = (t_book){{0}};
+t_book	g_book = (t_book){0, NULL, NULL, NULL};
 
-void* mallocL(size_t size)
+void	*use_g_tiny(size_t size)
 {
-	if(book.meta_data.page_size == 0)
-	{
-		book.meta_data.page_size = getpagesize();
-		putstr("init size\n");
-	}
+	if (g_book.tiny_first_page == NULL)
+		g_book.tiny_first_page = add_page(TINY * PAGE_COEF);
+	return (find_page(g_book.tiny_first_page, size));
+}
 
-	printf("page size = %zu\n",book.meta_data.page_size);
+void	*use_g_small(size_t size)
+{
+	if (g_book.small_first_page == NULL)
+		g_book.small_first_page = add_page(SMALL * PAGE_COEF);
+	return (find_page(g_book.small_first_page, size));
+}
 
-	size = 0;
-    return (NULL);
+void	*use_g_large(size_t size)
+{
+	if (g_book.large_first_page == NULL)
+		g_book.large_first_page = add_page(size);
+	return (find_page(g_book.large_first_page, size));
+}
+
+void	*malloc_l(size_t size)
+{
+	if (size == 0)
+		return (NULL);
+	if (g_book.min_size == 0)
+		g_book.min_size = getpagesize();
+	if (size <= TINY)
+		return (use_g_tiny(size));
+	else if (size <= SMALL)
+		return (use_g_small(size));
+	else
+		return (use_g_large(size));
 }

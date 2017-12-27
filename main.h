@@ -3,6 +3,6 @@
 
 #include "includes/malloc.h"
 
-void* mallocL(size_t size);
+void* malloc_l(size_t size);
 
 #endif
