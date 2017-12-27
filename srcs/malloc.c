@@ -17,14 +17,14 @@ t_book	g_book = (t_book){0, NULL, NULL, NULL};
 void	*use_g_tiny(size_t size)
 {
 	if (g_book.tiny_first_page == NULL)
-		g_book.tiny_first_page = add_page(TINY * PAGE_COEF);
+		g_book.tiny_first_page = add_page(TINY * PAGE_COEF * g_book.min_size);
 	return (find_page(g_book.tiny_first_page, size));
 }
 
 void	*use_g_small(size_t size)
 {
 	if (g_book.small_first_page == NULL)
-		g_book.small_first_page = add_page(SMALL * PAGE_COEF);
+		g_book.small_first_page = add_page(SMALL * PAGE_COEF * g_book.min_size);
 	return (find_page(g_book.small_first_page, size));
 }
 

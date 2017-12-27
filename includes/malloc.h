@@ -45,7 +45,7 @@ typedef struct	s_book{
 
 t_book_page		*add_page(size_t page_size);
 void			*find_page(t_book_page *first_page, size_t size);
-void			*find_block(t_book_page *cur_page, size_t size);
+void			*find_block(char *block, size_t size);
 /*
 **				libft
 */

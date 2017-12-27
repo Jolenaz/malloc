@@ -18,7 +18,11 @@ SRC_FILES = malloc.c \
 			free.c \
 			realloc.c \
 			tools.c \
-			libft.c
+			libft.c \
+			add_page.c \
+			find_page.c \
+			find_block.c
+
 
 OBJ_DIR = ./obj/
 OBJ_FILES = $(SRC_FILES:.c=.o)
