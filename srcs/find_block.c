@@ -34,6 +34,9 @@ void	*find_block(t_block *block, size_t size)
 			block->block_size = size;
 		}
 		block->state = block->state ^ IS_FREE;
+		ft_putstr("addr donne : ");
+		ft_putnbr((unsigned long long)block->data);
+		ft_putstr("\n");
 		return (block->data);
 	}
 	if (is_last(block->state))

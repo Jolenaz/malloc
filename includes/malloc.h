@@ -23,7 +23,7 @@
 # define SMALL 100
 # define PAGE_COEF 100
 
-# define DEBUG 0
+# define DEBUG 1
 
 typedef struct	s_block{
 	size_t	block_size;
@@ -59,6 +59,6 @@ char			is_last(char state);
 */
 void			ft_putstr(char *str);
 unsigned long	ft_strlen(const char *str);
-void			ft_putnbr(size_t nbr);
+void			ft_putnbr(unsigned long long nbr);
 void			ft_putchar(char c);
 #endif

@@ -13,5 +13,9 @@
 #include "malloc.h"
 
 void free(void *data){
-	data = NULL;
+	if (data == NULL)
+		return;
+		ft_putstr("addr donne in free : ");
+		ft_putnbr((unsigned long long )data);
+		ft_putstr("\n");
 }

@@ -41,7 +41,7 @@ void			ft_putstr(char *str)
 		write(1, str, ft_strlen(str));
 }
 
-void			ft_putnbr(size_t nbr)
+void			ft_putnbr(unsigned long long  nbr)
 {
 	static char phrase[10] = "0123456789";
 
