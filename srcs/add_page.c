@@ -30,14 +30,14 @@ void		init_page(t_book_page *page, size_t size)
 
 t_book_page	*add_page(size_t size)
 {
-	void	*page;
+	t_book_page	*page;
 
 	if (size <= SMALL * PAGE_COEF * (size_t)getpagesize())
 		size += 100 * sizeof(t_block) + sizeof(t_book_page);
 	else
 		size += sizeof(t_block) + sizeof(t_book_page);
-	size = (size / (size_t)getpagesize() + 1);
-	page = mmap(0, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	size = (size / (size_t)getpagesize() + 1) * (size_t)getpagesize();
+	page = (t_book_page	*)mmap(0, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (page == MAP_FAILED)
 		return (NULL);
 	init_page((t_book_page*)page, size);

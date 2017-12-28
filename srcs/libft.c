@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-unsigned long	strlen(const char *str)
+unsigned long	ft_strlen(const char *str)
 {
 	size_t	i;
 	char 	*ptr;
@@ -29,7 +29,25 @@ unsigned long	strlen(const char *str)
 	return (i);
 }
 
-void			putstr(char *str)
+void			ft_putchar(char c)
 {
-	write(1, str, strlen(str));
+	if (DEBUG)
+		write(1, &c, 1);
+}
+
+void			ft_putstr(char *str)
+{
+	if (DEBUG)
+		write(1, str, ft_strlen(str));
+}
+
+void			ft_putnbr(size_t nbr)
+{
+	static char phrase[10] = "0123456789";
+
+	if ((nbr / 10) != 0)
+	{
+		ft_putnbr(nbr / 10);
+	}
+	ft_putchar(phrase[nbr % 10]);
 }
