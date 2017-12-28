@@ -35,8 +35,9 @@ void	*use_g_large(size_t size)
 	return (find_page(g_book.large_first_page, size));
 }
 
-void	*malloc_l(size_t size)
+void	*malloc(size_t size)
 {
+	putnbr(size);
 	if (size == 0)
 		return (NULL);
 	if (g_book.min_size == 0)

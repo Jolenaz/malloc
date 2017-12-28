@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void* reallocL(void * ptr, unsigned long int i)
-{
-    i = 0;
-    ptr = 0;
+#include "malloc.h"
 
-    return 0;
+void	*realloc(void * ptr, unsigned long int i)
+{
+	ptr = NULL;
+    return (malloc(i));
 }

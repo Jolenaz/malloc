@@ -12,4 +12,12 @@
 
 #include "malloc.h"
 
+char	is_free(char state)
+{
+	return ((state & IS_FREE) == IS_FREE);
+}
 
+char	is_last(char state)
+{
+	return ((state & IS_LAST) == IS_LAST);
+}	

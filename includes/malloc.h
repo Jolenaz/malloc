@@ -26,14 +26,14 @@
 typedef struct	s_block{
 	size_t	block_size;
 	char	state;
-	void	*this;
+	void	*data;
 }				t_block;
 
 typedef struct	s_book_page{
 	size_t				page_syze;
 	size_t				max_available_size;
 	struct s_book_page	*next;
-	void				*this;
+	struct s_block		*first_block;
 }				t_book_page;
 
 typedef struct	s_book{
@@ -45,7 +45,13 @@ typedef struct	s_book{
 
 t_book_page		*add_page(size_t page_size);
 void			*find_page(t_book_page *first_page, size_t size);
-void			*find_block(char *block, size_t size);
+void			*find_block(t_block *block, size_t size);
+void			*malloc(size_t i);
+/*
+**				tools
+*/
+char			is_free(char state);
+char			is_last(char state);
 /*
 **				libft
 */

@@ -1,12 +1,7 @@
 
-#include "main.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 int main(){
-
-	malloc_l(10);
-	malloc_l(10);
-	
-return 0;
-
-
+	return 0;
 }

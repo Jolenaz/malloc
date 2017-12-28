@@ -15,14 +15,16 @@
 unsigned long	strlen(const char *str)
 {
 	size_t	i;
+	char 	*ptr;
 
 	if (str == NULL)
 		return (0);
 	i = 0;
-	while (*str)
+	ptr = (char*)str;
+	while (*ptr)
 	{
 		i++;
-		str++;
+		ptr++;
 	}
 	return (i);
 }
