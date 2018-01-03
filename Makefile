@@ -15,13 +15,13 @@ INC_FILES = malloc.h
 
 SRC_DIR = ./srcs/
 SRC_FILES = malloc.c \
-			free.c \
-			realloc.c \
 			tools.c \
 			libft.c \
 			add_page.c \
 			find_page.c \
-			find_block.c
+			find_block.c \
+			get_size.c \
+			is_in_book.c
 
 
 OBJ_DIR = ./obj/

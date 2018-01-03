@@ -46,6 +46,6 @@ void	*find_page(t_book_page *page, size_t size)
 		return (ret);
 	}
 	if (page->next == NULL)
-		page->next = add_page(page->page_syze);
+		page->next = add_page(page->page_size);
 	return (find_page(page->next, size));
 }

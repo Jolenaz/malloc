@@ -12,45 +12,34 @@
 
 #include "malloc.h"
 
-t_book	g_book = (t_book){0, NULL, NULL, NULL};
-
-void	*use_g_tiny(size_t size)
-{
-	if (g_book.tiny_first_page == NULL)
-		g_book.tiny_first_page = add_page(TINY * PAGE_COEF * g_book.min_size);
-	return (find_page(g_book.tiny_first_page, size));
-}
-
-void	*use_g_small(size_t size)
-{
-	if (g_book.small_first_page == NULL)
-		g_book.small_first_page = add_page(SMALL * PAGE_COEF * g_book.min_size);
-	return (find_page(g_book.small_first_page, size));
-}
-
-void	*use_g_large(size_t size)
-{
-	if (g_book.large_first_page == NULL)
-		g_book.large_first_page = add_page(size);
-	return (find_page(g_book.large_first_page, size));
-}
+t_book	g_book = (t_book){NULL, NULL, NULL};
 
 void	*malloc(size_t size)
 {
-	static int i = 0;
-	if (i == 0)
-	{
-		i = 1;
-	//	ft_putstr("first time \n");
-	}
+	g_min_size = getpagesize();
 	if (size == 0)
 		return (NULL);
-	if (g_book.min_size == 0)
-		g_book.min_size = getpagesize();
-	if (size <= TINY * g_book.min_size)
-		return (use_g_tiny(size));
-	else if (size <= SMALL * g_book.min_size)
-		return (use_g_small(size));
+	if (size <= TINY * g_min_size)
+		return (use_g_tiny(size, &g_book));
+	else if (size <= SMALL * g_min_size)
+		return (use_g_small(size, &g_book));
 	else
-		return (use_g_large(size));
+		return (use_g_large(size, &g_book));
+}
+
+void free(void *data){
+	ft_putstr("addr donne in free : ");
+	ft_putnbr((unsigned long long )data);
+	ft_putstr("\n");
+	if (data == NULL || !is_in_book(data, &g_book))
+		ft_putstr("not in my book\n");
+	else
+		ft_putstr("in my book\n");
+	
+}
+
+void	*realloc(void * ptr, unsigned long int i)
+{
+	ptr = NULL;
+    return (malloc(i));
 }
