@@ -15,8 +15,9 @@
 void		init_block(t_block *block, size_t size )
 {
 	block->block_size = size;
-	block->state = IS_FREE | IS_LAST;
+	block->is_free = 1;
 	block->data = (void*)(block + 1);
+	block->next = NULL;
 }
 
 void		init_page(t_book_page *page, size_t size)

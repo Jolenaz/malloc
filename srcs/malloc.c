@@ -28,18 +28,18 @@ void	*malloc(size_t size)
 }
 
 void free(void *data){
-	ft_putstr("addr donne in free : ");
-	ft_putnbr((unsigned long long )data);
-	ft_putstr("\n");
-	if (data == NULL || !is_in_book(data, &g_book))
-		ft_putstr("not in my book\n");
+	t_book_page	*page;
+
+	page = is_in_book(data, &g_book);
+	if (data == NULL || page == NULL)
+		return;
 	else
-		ft_putstr("in my book\n");
-	
+		free_block(page, data);
 }
 
-void	*realloc(void * ptr, unsigned long int i)
+void	*realloc(void *ptr, size_t i)
 {
+	ft_putstr("entre realloc\n");
 	ptr = NULL;
     return (malloc(i));
 }

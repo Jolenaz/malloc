@@ -12,25 +12,18 @@
 
 #include "malloc.h"
 
-size_t	max(size_t a, size_t b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
 size_t	get_new_size(t_block *block)
 {
 	size_t	ret;
-	t_block	*next_block;
+	t_block	*ptr;
 
 	ret = 0;
-	if (is_free(block->state))
-		ret = block->block_size;
-	if (!is_last(block->state))
+	ptr = block;
+	while (ptr)
 	{
-		next_block = (t_block*)((char*)(block->data) + block->block_size);
-		return (max(ret, get_new_size(next_block)));
+		if (ptr->is_free && (ptr->block_size > ret))
+			ret = ptr->block_size;
+		ptr = ptr->next;
 	}
 	return (ret);
 }

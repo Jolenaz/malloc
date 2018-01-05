@@ -6,12 +6,13 @@
 int main(){
 	int i = 0;
 	char *c;
-
+	
 	while (i < 1024)
 	{
-		//c = (char*)malloc(1024);
-		//c[0] = 42;
+		c = (char*)malloc(1024);
+		c[0] = 42;
 		i++;
+		free(c);
 	}
 	return 0;
 }
