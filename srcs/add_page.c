@@ -20,27 +20,28 @@ void		init_block(t_block *block, size_t size )
 	block->next = NULL;
 }
 
-void		init_page(t_book_page *page, size_t size)
+void		init_page(t_page *page, size_t size, t_type type)
 {
-	page->page_size = size - sizeof(t_book_page);
-	page->max_available_size = page->page_size - sizeof(t_block);
+	page->page_size = size - sizeof(t_page);
+	page->type = type;
 	page->next = NULL;
+	page->max_available_size = page->page_size - sizeof(t_block) - sizeof(t_page);
 	page->first_block = (t_block*)(page + 1);
 	init_block( page->first_block, page->max_available_size);
 }
 
-t_book_page	*add_page(size_t size)
+t_page	*add_page(size_t size, t_type type)
 {
-	t_book_page	*page;
+	t_page	*page;
 
-	if (size <= SMALL * PAGE_COEF * g_min_size )
-		size += 100 * sizeof(t_block) + sizeof(t_book_page);
+	if (type == tiny || type == small)
+		size += 100 * sizeof(t_block) + sizeof(t_page);
 	else
-		size += sizeof(t_block) + sizeof(t_book_page);
+		size += sizeof(t_page) + sizeof(t_block);
 	size = (size / g_min_size  + 1) * g_min_size ;
-	page = (t_book_page	*)mmap(0, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	page = (t_page	*)mmap(0, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (page == MAP_FAILED)
 		return (NULL);
-	init_page((t_book_page*)page, size);
+	init_page(page, size, type);
 	return (page);
 }

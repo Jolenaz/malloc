@@ -1,7 +1,7 @@
 
 #include "malloc.h"
 
-t_book_page	*is_in_page(void *addr, t_book_page *page)
+t_page	*is_in_page(void *addr, t_page *page)
 {
 	if (page == NULL)
 		return (NULL);
@@ -10,9 +10,9 @@ t_book_page	*is_in_page(void *addr, t_book_page *page)
 	return(is_in_page(addr, page->next));
 }
 
-t_book_page	*is_in_book(void *addr, t_book *book)
+t_page	*is_in_book(void *addr, t_book *book)
 {
-	t_book_page *ret;
+	t_page *ret;
 
 	ret = NULL;
 	if ((ret = is_in_page(addr, book->tiny_first_page)) != NULL)

@@ -28,18 +28,38 @@ void	*malloc(size_t size)
 }
 
 void free(void *data){
-	t_book_page	*page;
+	t_page	*page;
 
 	page = is_in_book(data, &g_book);
 	if (data == NULL || page == NULL)
 		return;
 	else
+	{
 		free_block(page, data);
+		// if(page->type == large)
+		// 	delete_page(&g_book, page);
+	}
 }
 
 void	*realloc(void *ptr, size_t i)
 {
-	ft_putstr("entre realloc\n");
-	ptr = NULL;
-    return (malloc(i));
+	t_page	*page;
+	void		*ret;
+	size_t		mem_to_copy;
+
+	if (i == 0)
+	{
+		free(ptr);
+		return (malloc(1));
+	}
+	page = is_in_book(ptr, &g_book);
+	if (ptr == NULL || page == NULL)
+		return (malloc(i));
+	mem_to_copy  = realloc_block(ptr, i, page);
+	if (mem_to_copy == 0)
+	 	return (ptr);
+	ret = malloc(i);
+	ft_memcpy(ret, ptr, mem_to_copy);
+	free(ptr);
+    return (ret);
 }

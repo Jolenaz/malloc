@@ -42,8 +42,11 @@ char	update_block(t_block *block, void *data)
 	return (0);
 }
 
-void	free_block(t_book_page *page, void *data)
+void	free_block(t_page *page, void *data)
 {
 	if (update_block(page->first_block, data))
-		defragment(page->first_block);
+	{
+		if(page->type != large)
+			defragment(page->first_block);
+	}
 }

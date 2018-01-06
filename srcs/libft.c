@@ -51,3 +51,21 @@ void			ft_putnbr(unsigned long long  nbr)
 	}
 	ft_putchar(phrase[nbr % 10]);
 }
+
+void			ft_memcpy(void *new_v, void *old_v, size_t size)
+{
+	char *new;
+	char *old;
+
+	if (new_v == NULL || old_v == NULL || size == 0)
+		return;
+	new = (char*)new_v;
+	old = (char*)old_v;
+	while(size)
+	{
+		*new = *old;
+		new++;
+		old++;
+		size--;
+	}
+}
