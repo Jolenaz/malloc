@@ -43,5 +43,7 @@ t_page	*add_page(size_t size, t_type type)
 	if (page == MAP_FAILED)
 		return (NULL);
 	init_page(page, size, type);
+	ft_putstr("Create New page : ");
+	ft_putnbrendl((unsigned long long)page);
 	return (page);
 }

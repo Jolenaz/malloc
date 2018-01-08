@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "malloc.h"
 
 void test1(){
 	void *c[100];
@@ -45,10 +46,10 @@ void test2()
 {
 	char *c;
 
-	int i =0;
-	while(i < 1000)
+	int i =1;
+	while(i < 10)
 	{
-		c = (char*)malloc(100000000 * i);
+		c = (char*)malloc(i);
 		if (c == NULL)
 			write(1, "probleme \n", 10);
 		free(c);
@@ -59,8 +60,16 @@ void test2()
 
 }
 
+void test3()
+{
+}
+
 int main()
 {
-	test1();
+	use_malloc_debug(DEBUG_ENABLE);
+	char *c = NULL;
+	c = malloc(1);
+	use_malloc_debug(DEBUG_DISABLE);
+	ft_putstr("here2\n");
 	return (0);
 }

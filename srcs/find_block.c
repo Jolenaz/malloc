@@ -34,6 +34,10 @@ void	*find_block(t_block *block, size_t size)
 			block->block_size = size;
 		}
 		block->is_free = 0;
+		ft_putstr("		addr return : ");
+		ft_putnbrendl((unsigned long long)block->data);
+		ft_putstr("	block find : ");
+		ft_putnbrendl((unsigned long long)block);
 		return (block->data);
 	}
 	if (block->next == NULL)

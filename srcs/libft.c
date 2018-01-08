@@ -31,13 +31,13 @@ unsigned long	ft_strlen(const char *str)
 
 void			ft_putchar(char c)
 {
-	if (DEBUG)
+	if (debug_flag)
 		write(1, &c, 1);
 }
 
 void			ft_putstr(char *str)
 {
-	if (DEBUG)
+	if (debug_flag)
 		write(1, str, ft_strlen(str));
 }
 
@@ -50,6 +50,12 @@ void			ft_putnbr(unsigned long long  nbr)
 		ft_putnbr(nbr / 10);
 	}
 	ft_putchar(phrase[nbr % 10]);
+}
+
+void			ft_putnbrendl(unsigned long long  nbr)
+{
+	ft_putnbr(nbr);
+	ft_putchar('\n');
 }
 
 void			ft_memcpy(void *new_v, void *old_v, size_t size)

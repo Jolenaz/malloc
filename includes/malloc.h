@@ -20,9 +20,8 @@
 # define SMALL 100
 # define PAGE_COEF 100
 
-# define DEBUG 0
-
-size_t			g_min_size;
+# define DEBUG_ENABLE 1
+# define DEBUG_DISABLE 0
 
 typedef enum	e_type{
 	tiny,
@@ -70,4 +69,15 @@ unsigned long	ft_strlen(const char *str);
 void			ft_putnbr(unsigned long long nbr);
 void			ft_putchar(char c);
 void			ft_memcpy(void *new, void *old, size_t size);
+void			ft_putnbrendl(unsigned long long  nbr);
+/*
+**				debug
+*/
+void			use_malloc_debug(int flag);
+/*
+**				globales variables
+*/
+size_t			g_min_size;
+int				debug_flag;
+t_book			*g_book_h;
 #endif

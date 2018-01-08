@@ -23,7 +23,8 @@ SRC_FILES = malloc.c \
 			is_in_book.c \
 			free_block.c \
 			realloc_block.c \
-			delete_page.c
+			delete_page.c \
+			debug.c
 
 
 OBJ_DIR = ./obj/

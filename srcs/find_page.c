@@ -31,34 +31,15 @@ size_t	get_new_size(t_block *block)
 void	*find_page(t_page *page, size_t size)
 {
 	void	*ret;
-	ft_putstr("test de merde________________\n");
-	if (page->type == large)
-	{
-		ft_putstr("looking in :");
-		ft_putnbr((unsigned long long)page);
-		ft_putchar('\n');
-	}
-	ft_putstr("test de merde_____________2___\n");
-	if (page->type != large && page->max_available_size >= size)
+	if (page->max_available_size >= size)
 	{
 		ret = find_block(page->first_block, size);
 		page->max_available_size = get_new_size(page->first_block);
+		ft_putstr("Page find : ");
+		ft_putnbrendl((unsigned long long)page);
 		return (ret);
 	}
 	if (page->next == NULL)
-	{
-		if (page->type == large)
-		{
-			page->next = add_page(size, page->type);
-			ft_putstr("return page : ");
-			ft_putnbr((unsigned long long)page->next);
-			ft_putstr(", block : ");
-			ft_putnbr((unsigned long long)page->next->first_block);
-			ft_putchar('\n');
-			return (page->next->first_block);
-		}
-		else
-			page->next = add_page(page->page_size, page->type);
-	}
+		page->next = add_page(page->page_size, page->type);
 	return (find_page(page->next, size));
 }

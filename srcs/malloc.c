@@ -13,6 +13,7 @@
 #include "malloc.h"
 
 t_book	g_book = (t_book){NULL, NULL, NULL};
+t_book	*g_book_h = &g_book;
 
 void	*malloc(size_t size)
 {
@@ -43,7 +44,7 @@ void free(void *data){
 
 void	*realloc(void *ptr, size_t i)
 {
-	t_page	*page;
+	t_page		*page;
 	void		*ret;
 	size_t		mem_to_copy;
 
