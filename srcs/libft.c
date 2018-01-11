@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-unsigned long	ft_strlen(const char *str)
+unsigned int	ft_strlen(const char *str)
 {
 	size_t	i;
 	char 	*ptr;
@@ -29,33 +29,50 @@ unsigned long	ft_strlen(const char *str)
 	return (i);
 }
 
-void			ft_putchar(char c)
+void			ft_putchar(char c, char flag)
 {
-	if (debug_flag)
+	if (flag)
 		write(1, &c, 1);
 }
 
-void			ft_putstr(char *str)
+void			ft_putstr(char *str, char flag)
 {
-	if (debug_flag)
+	if (flag)
 		write(1, str, ft_strlen(str));
 }
 
-void			ft_putnbr(unsigned long long  nbr)
+void			ft_putnbr(unsigned long long  nbr, char flag)
 {
 	static char phrase[10] = "0123456789";
 
 	if ((nbr / 10) != 0)
 	{
-		ft_putnbr(nbr / 10);
+		ft_putnbr(nbr / 10, flag);
 	}
-	ft_putchar(phrase[nbr % 10]);
+	ft_putchar(phrase[nbr % 10], flag);
 }
 
-void			ft_putnbrendl(unsigned long long  nbr)
+void			ft_putnbr_hex(unsigned long long  nbr, char flag)
 {
-	ft_putnbr(nbr);
-	ft_putchar('\n');
+	static char phrase[16] = "0123456789ABCDEF";
+
+	if ((nbr / 16) != 0)
+	{
+		ft_putnbr_hex(nbr / 16, flag);
+	}
+	ft_putchar(phrase[nbr % 16], flag);
+}
+
+void			ft_putnbr_hex_endl(unsigned long long  nbr, char flag)
+{
+	ft_putnbr_hex(nbr, flag);
+	ft_putchar('\n', flag);
+}
+
+void			ft_putnbr_endl(unsigned long long  nbr, char flag)
+{
+	ft_putnbr(nbr, flag);
+	ft_putchar('\n', flag);
 }
 
 void			ft_memcpy(void *new_v, void *old_v, size_t size)

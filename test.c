@@ -66,10 +66,8 @@ void test3()
 
 int main()
 {
-	use_malloc_debug(DEBUG_ENABLE);
 	char *c = NULL;
 	c = malloc(1);
-	use_malloc_debug(DEBUG_DISABLE);
-	ft_putstr("here2\n");
+	show_alloc_mem();
 	return (0);
 }

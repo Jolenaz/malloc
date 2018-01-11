@@ -45,9 +45,9 @@ typedef struct	s_page{
 }				t_page;
 
 typedef struct	s_book{
-	t_page	*tiny_first_page;
-	t_page	*small_first_page;
-	t_page	*large_first_page;
+	t_page	*tiny_page;
+	t_page	*small_page;
+	t_page	*large_page;
 }				t_book;
 
 t_page		*add_page(size_t page_size, t_type type);
@@ -64,16 +64,19 @@ void			delete_page(t_book *book, t_page *page);
 /*
 **				libft
 */
-void			ft_putstr(char *str);
-unsigned long	ft_strlen(const char *str);
-void			ft_putnbr(unsigned long long nbr);
-void			ft_putchar(char c);
+unsigned int	ft_strlen(const char *str);
 void			ft_memcpy(void *new, void *old, size_t size);
-void			ft_putnbrendl(unsigned long long  nbr);
+void			ft_putchar(char c, char flag);
+void			ft_putstr(char *str, char flag);
+void			ft_putnbr(unsigned long long nbr, char flag);
+void			ft_putnbr_endl(unsigned long long  nbr, char flag);
+void			ft_putnbr_hex(unsigned long long  nbr, char flag);
+void			ft_putnbr_hex_endl(unsigned long long  nbr, char flag);
 /*
 **				debug
 */
 void			use_malloc_debug(int flag);
+void			show_alloc_mem(void);
 /*
 **				globales variables
 */

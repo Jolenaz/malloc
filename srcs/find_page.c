@@ -35,8 +35,8 @@ void	*find_page(t_page *page, size_t size)
 	{
 		ret = find_block(page->first_block, size);
 		page->max_available_size = get_new_size(page->first_block);
-		ft_putstr("Page find : ");
-		ft_putnbrendl((unsigned long long)page);
+		ft_putstr("Page find : ", debug_flag);
+		ft_putnbr_endl((unsigned long long)page, debug_flag);
 		return (ret);
 	}
 	if (page->next == NULL)

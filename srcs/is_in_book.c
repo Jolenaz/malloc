@@ -15,9 +15,9 @@ t_page	*is_in_book(void *addr, t_book *book)
 	t_page *ret;
 
 	ret = NULL;
-	if ((ret = is_in_page(addr, book->tiny_first_page)) != NULL)
+	if ((ret = is_in_page(addr, book->tiny_page)) != NULL)
 		return (ret);
-	if ((ret = is_in_page(addr, book->small_first_page)) != NULL)
+	if ((ret = is_in_page(addr, book->small_page)) != NULL)
 		return (ret);
-	return (is_in_page(addr, book->large_first_page));
+	return (is_in_page(addr, book->large_page));
 }
