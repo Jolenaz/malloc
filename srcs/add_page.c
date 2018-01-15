@@ -22,7 +22,7 @@ void		init_block(t_block *block, size_t size )
 
 void		init_page(t_page *page, size_t size, t_type type)
 {
-	page->page_size = size - sizeof(t_page);
+	page->page_size = size;
 	page->type = type;
 	page->next = NULL;
 	page->max_available_size = page->page_size - sizeof(t_block) - sizeof(t_page);

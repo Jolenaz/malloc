@@ -11,7 +11,7 @@ void			delete_page(t_book *book, t_page *page)
 	if (book->large_page == page)
 	{
 		book->large_page = ptr->next;
-		if (munmap(page, page->page_size + sizeof(t_page)) != 0)
+		if (munmap(page, page->page_size) != 0)
 			ft_putstr("delete probleme\n", debug_flag);
 		return;
 	}
@@ -22,7 +22,7 @@ void			delete_page(t_book *book, t_page *page)
 			ptr->next = ptr->next->next;
 			ft_putstr("new next : ", debug_flag);
 			ft_putnbr_hex_endl((unsigned long long)ptr->next, debug_flag);
-			munmap(ptr->next, page->page_size + sizeof(t_page));
+			munmap(ptr->next, page->page_size);
 			return;
 		}
 		ptr = ptr->next;

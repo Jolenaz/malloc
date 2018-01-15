@@ -31,7 +31,7 @@ size_t	get_new_size(t_block *block)
 void	*find_page(t_page *page, size_t size)
 {
 	void	*ret;
-	if (page->max_available_size >= size)
+	if ( page->type != large && page->max_available_size >= size)
 	{
 		ret = find_block(page->first_block, size);
 		page->max_available_size = get_new_size(page->first_block);
@@ -40,6 +40,6 @@ void	*find_page(t_page *page, size_t size)
 		return (ret);
 	}
 	if (page->next == NULL)
-		page->next = add_page(page->page_size, page->type);
+		page->next = add_page(size, page->type);
 	return (find_page(page->next, size));
 }

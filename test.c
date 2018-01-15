@@ -14,7 +14,7 @@ void test1(){
 	int j = 0;
 	int bo = 0;
 
-	while(j < 408000)
+	while(j < 400)
 	{
 		int r = rand() % 100;
 
@@ -26,12 +26,7 @@ void test1(){
 		if (c[r] == NULL)
 		{
 			int l =  rand();
-
-			if (bo)
-				write(1,"toto0\n",6);
 			c[r] = malloc(l);
-			if (bo)
-				write(1,"totO1\n",6);
 		}
 		else
 		{
@@ -40,6 +35,7 @@ void test1(){
 		}
 		j++;
 	}
+
 }
 
 void test2()
@@ -66,8 +62,7 @@ void test3()
 
 int main()
 {
-	char *c = NULL;
-	c = malloc(1);
+	test1();
 	show_alloc_mem();
 	return (0);
 }
