@@ -12,27 +12,28 @@ void test1(){
 	}
 
 	int j = 0;
-	int bo = 0;
 
-	while(j < 400)
+	while(j < 100000)
 	{
+		if (j>=621)
+		{
+			use_malloc_debug(1);
+			ft_putnbr_endl(j,1);
+	show_all_mem();
+
+		}
 		int r = rand() % 100;
 
-		if (j > 8)
-		{
-			bo = 0; 
-			// write(1, "death\n",6);
-		}
+		int l =  rand() % 1024;
 		if (c[r] == NULL)
-		{
-			int l =  rand();
 			c[r] = malloc(l);
-		}
-		else
+		else if (l % 2)
 		{
 			free(c[r]);
 			c[r] = NULL;
 		}
+		else
+			c[r]=realloc(c[r],l);
 		j++;
 	}
 
@@ -62,7 +63,10 @@ void test3()
 
 int main()
 {
+	// char *c = malloc(100);
+	// char *p = malloc(10);
+	// show_all_mem();
+	// c = realloc(c, 20);
 	test1();
-	show_alloc_mem();
 	return (0);
 }

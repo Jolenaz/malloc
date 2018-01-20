@@ -8,7 +8,7 @@ void			delete_page(t_book *book, t_page *page)
 	ft_putnbr_hex_endl((unsigned long long) page, debug_flag);
 
 	ptr = book->large_page;
-	if (book->large_page == page)
+	if (ptr == page)
 	{
 		book->large_page = ptr->next;
 		if (munmap(page, page->page_size) != 0)
@@ -22,7 +22,7 @@ void			delete_page(t_book *book, t_page *page)
 			ptr->next = ptr->next->next;
 			ft_putstr("new next : ", debug_flag);
 			ft_putnbr_hex_endl((unsigned long long)ptr->next, debug_flag);
-			munmap(ptr->next, page->page_size);
+			munmap(page, page->page_size);
 			return;
 		}
 		ptr = ptr->next;

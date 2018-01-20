@@ -1,0 +1,8 @@
+|  |__ Block :100B3ABD5, is free :False, block size :634, data addr :100B3ABF5
+|  |__ Block :100B3AE6F, is free :False, block size :635, data addr :100B3AE8F
+|  |__ Block :100B3B10A, is free :True, block size :24, data addr :100B3B12A
+|  |__ Block :100B3B142, is free :False, block size :798, data addr :100B3B162
+|  |__ Block :100B3B480, is free :True, block size :220, data addr :100B3B4A0
+|  |__ Block :100B3B57C, is free :False, block size :588, data addr :100B3B59C
+|  |__ Block :100B3B7E8, is free :False, block size :860, data addr :100B3B808
+realloc for :100B3B162 , 826

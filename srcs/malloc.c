@@ -18,6 +18,8 @@ t_book	*g_book_h = &g_book;
 void	*malloc(size_t size)
 {
 	g_min_size = getpagesize();
+	ft_putstr("malloc for :",debug_flag);
+	ft_putnbr_endl(size,debug_flag);
 	if (size == 0)
 		return (NULL);
 	if (size <= TINY * g_min_size)
@@ -31,15 +33,15 @@ void	*malloc(size_t size)
 void free(void *data){
 	t_page	*page;
 
+	ft_putstr("free for :",debug_flag);
+	ft_putnbr_hex_endl((unsigned long long)data,debug_flag);
 	page = is_in_book(data, &g_book);
 	if (data == NULL || page == NULL)
 		return;
-	else
-	{
+	else if (page->type != large)
 		free_block(page, data);
-		// if(page->type == large)
-		// 	delete_page(&g_book, page);
-	}
+	else
+		delete_page(&g_book, page);
 }
 
 void	*realloc(void *ptr, size_t i)
@@ -48,6 +50,10 @@ void	*realloc(void *ptr, size_t i)
 	void		*ret;
 	size_t		mem_to_copy;
 
+	ft_putstr("realloc for :",debug_flag);
+	ft_putnbr_hex((unsigned long long)ptr,debug_flag);
+	ft_putstr(" , ",debug_flag);
+	ft_putnbr_endl(i,debug_flag);
 	if (i == 0)
 	{
 		free(ptr);

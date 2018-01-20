@@ -32,7 +32,7 @@ void print_page(t_page *page)
 	print_page(page->next);
 }
 
-void show_alloc_mem()
+void show_all_mem()
 {
 	if (g_book_h == NULL)
 		return;

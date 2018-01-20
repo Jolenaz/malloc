@@ -52,7 +52,7 @@ typedef struct	s_book{
 
 t_page		*add_page(size_t page_size, t_type type);
 void			*find_page(t_page *first, size_t size);
-void			*find_block(t_block *block, size_t size);
+void			*find_block(t_block *block, size_t size, t_type);
 void			*use_g_tiny(size_t size, t_book *);
 void			*use_g_small(size_t size, t_book *);
 void			*use_g_large(size_t size, t_book *);
@@ -76,7 +76,7 @@ void			ft_putnbr_hex_endl(unsigned long long  nbr, char flag);
 **				debug
 */
 void			use_malloc_debug(int flag);
-void			show_alloc_mem(void);
+void			show_all_mem(void);
 /*
 **				globales variables
 */

@@ -24,11 +24,11 @@ t_block	*create_block(t_block *old, size_t size)
 	return (new);
 }
 
-void	*find_block(t_block *block, size_t size)
+void	*find_block(t_block *block, size_t size, t_type type)
 {
 	if (block->block_size >= size && block->is_free)
 	{
-		if (block->block_size > size + sizeof(t_block))
+		if (block->block_size > size + sizeof(t_block) && type != large)
 		{
 			block->next = create_block(block, size);
 			block->block_size = size;
@@ -42,5 +42,5 @@ void	*find_block(t_block *block, size_t size)
 	}
 	if (block->next == NULL)
 		return (NULL);
-	return (find_block(block->next, size));
+	return (find_block(block->next, size, type));
 }

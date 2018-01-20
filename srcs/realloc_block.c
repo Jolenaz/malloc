@@ -20,6 +20,8 @@ size_t	realloc_block(void *ptr, size_t i, t_page *page)
 	size_t	dispo;
 
 	block = get_block(ptr, page->first_block);
+	if (block->block_size >= i)
+		return (0);
 	if (block->next && block->next->is_free)
 	{
 		dispo = block->block_size + block->next->block_size + sizeof(t_block);

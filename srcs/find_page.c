@@ -31,9 +31,9 @@ size_t	get_new_size(t_block *block)
 void	*find_page(t_page *page, size_t size)
 {
 	void	*ret;
-	if ( page->type != large && page->max_available_size >= size)
+	if ( page->max_available_size >= size)
 	{
-		ret = find_block(page->first_block, size);
+		ret = find_block(page->first_block, size, page->type);
 		page->max_available_size = get_new_size(page->first_block);
 		ft_putstr("Page find : ", debug_flag);
 		ft_putnbr_endl((unsigned long long)page, debug_flag);
