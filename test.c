@@ -13,18 +13,11 @@ void test1(){
 
 	int j = 0;
 
-	while(j < 100000)
+	while(j < 1000000)
 	{
-		if (j>=621)
-		{
-			use_malloc_debug(1);
-			ft_putnbr_endl(j,1);
-	show_all_mem();
-
-		}
 		int r = rand() % 100;
 
-		int l =  rand() % 1024;
+		int l =  rand() % (1024 * 16 * 16);
 		if (c[r] == NULL)
 			c[r] = malloc(l);
 		else if (l % 2)
@@ -43,14 +36,10 @@ void test2()
 {
 	char *c;
 
-	int i =1;
-	while(i < 10)
+	int i = 1;
+	while(i < 10000)
 	{
 		c = (char*)malloc(i);
-		if (c == NULL)
-			write(1, "probleme \n", 10);
-		free(c);
-		c = NULL;
 		i++;
 	}
 
@@ -65,8 +54,15 @@ int main()
 {
 	// char *c = malloc(100);
 	// char *p = malloc(10);
-	// show_all_mem();
 	// c = realloc(c, 20);
-	test1();
+	int line = 2;
+	char *c = malloc(16 * line);
+	int i = 0;
+	while(i < (line * 16))
+	{
+		c[i] = i + 'A';
+		i++;
+	}
+	print_mem(c);
 	return (0);
 }

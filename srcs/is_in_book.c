@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_in_book.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbelless <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/20 15:38:06 by jbelless          #+#    #+#             */
+/*   Updated: 2018/01/20 15:38:10 by jbelless         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "malloc.h"
 
@@ -7,7 +18,7 @@ t_page	*is_in_page(void *addr, t_page *page)
 		return (NULL);
 	if (addr >= (void *)page && addr <= (void *)((char*)page + page->page_size))
 		return (page);
-	return(is_in_page(addr, page->next));
+	return (is_in_page(addr, page->next));
 }
 
 t_page	*is_in_book(void *addr, t_book *book)

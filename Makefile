@@ -8,7 +8,7 @@ CC = gcc
 CFLAGS =  -Wall -Wextra -Werror
 DYLDFLAGS = -shared
 IFLAGS = -I $(INC_DIR)
-LFLAGS = -lpthread
+PFLAGS = -lpthread
 
 INC_DIR = ./includes/
 INC_FILES = malloc.h
@@ -41,10 +41,10 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
  
 $(OBJ_DIR)%.o:  $(SRC_DIR)%.c $(INC)
-	$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(IFLAGS)  -o $@ -c $<
 
 $(NAME): $(OBJ)
-	$(CC) $(DYLDFLAGS) $^ -o $(NAME)
+	$(CC) $(DYLDFLAGS) $(PFLAGS) $^ -o $(NAME)
 	rm -f libft_malloc.so
 	ln -s libft_malloc_$(HOSTTYPE).so libft_malloc.so 
 

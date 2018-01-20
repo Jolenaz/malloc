@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbelless <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/20 15:30:01 by jbelless          #+#    #+#             */
+/*   Updated: 2018/01/20 15:30:05 by jbelless         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "malloc.h"
 
-int debug_flag = 0;
+int g_debug_flag = 0;
 
-void use_malloc_debug(int flag)
+void	use_malloc_debug(int flag)
 {
-	debug_flag = flag;
+	g_debug_flag = flag;
 }
