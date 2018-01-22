@@ -81,7 +81,7 @@ void	print_mem(void *data)
 
 	mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 	pthread_mutex_lock(&mutex);
-	if ((page = is_in_book(data, g_book_h)) == NULL 
+	if ((page = is_in_book(data, g_book_h)) == NULL
 			|| (block = get_block(data, page->first_block)) == NULL)
 	{
 		ft_putstr("addr was not allocated\n", 1);

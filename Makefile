@@ -16,6 +16,8 @@ INC_FILES = malloc.h
 SRC_DIR = ./srcs/
 SRC_FILES = malloc.c \
 			libft.c \
+			libft2.c \
+			print_mem.c \
 			add_page.c \
 			find_page.c \
 			find_block.c \
