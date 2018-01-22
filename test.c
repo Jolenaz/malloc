@@ -56,13 +56,16 @@ int main()
 	// char *p = malloc(10);
 	// c = realloc(c, 20);
 	int line = 2;
-	char *c = malloc(16 * line);
-	int i = 0;
-	while(i < (line * 16))
+	char *c = malloc(49);
+
+	char *d = malloc(45);
+	int i = 16;
+	while(i < 32)
 	{
-		c[i] = i + 'A';
+		c[i] = 'A' + i;
 		i++;
 	}
 	print_mem(c);
+	print_mem(d);
 	return (0);
 }
