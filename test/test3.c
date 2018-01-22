@@ -1,11 +1,9 @@
+#include <string.h>
+#include <stdlib.h>
 #include "malloc.h"
 
-#define M1 (1024 * 1024)
 
-void		print(char *s)
-{
-	write(1, s, strlen(s));
-}
+#define M1 (1024 * 1024)
 
 int			main(void)
 {
@@ -14,9 +12,9 @@ int			main(void)
 
 	addr1 = (char *)malloc(16 * M1);
 	strcpy(addr1, "Bonjours\n");
-	print(addr1);
+	ft_putstr(addr1, 1);
 	addr3 = (char *)realloc(addr1, 128 * M1);
 	addr3[127 * M1] = 42;
-	print(addr3);
+	ft_putstr(addr3, 1);
 	return (0);
 }

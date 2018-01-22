@@ -76,7 +76,7 @@ void			print_mem_hex(void *data, size_t size);
 **				debug
 */
 void			use_malloc_debug(int flag);
-void			show_all_mem(void);
+void			show_alloc_mem(void);
 void			print_mem(void *data);
 /*
 **				globales variables

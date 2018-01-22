@@ -1,10 +1,6 @@
 #include "malloc.h"
+#include <stdlib.h>
 
-void	ft_putstr(char const *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
 
 int		main(void)
 {
@@ -13,7 +9,7 @@ int		main(void)
 	malloc(1024 * 1024);
 	malloc(1024 * 1024 * 16);
 	malloc(1024 * 1024 * 128);
-	ft_putstr("\n---------show_alloc_mem()------------\n");
+	ft_putstr("\n---------show_alloc_mem()------------\n", 1);
 	show_alloc_mem();
 	return (0);
 }

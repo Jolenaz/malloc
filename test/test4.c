@@ -1,9 +1,6 @@
+#include <stdlib.h>
 #include "malloc.h"
 
-void		print(char *s)
-{
-	write(1, s, strlen(s));
-}
 
 int			main(void)
 {
@@ -15,6 +12,6 @@ int			main(void)
 	free((void *)addr + 5);
 	test = realloc((void *)addr + 5, 10);
 	if (test == NULL)
-		print("Bonjours\n");
+		ft_putstr("Bonjours\n", 1);
 	return (0);
 }

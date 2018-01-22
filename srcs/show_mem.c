@@ -44,7 +44,7 @@ void	print_page(t_page *page)
 	print_page(page->next);
 }
 
-void	show_all_mem(void)
+void	show_alloc_mem(void)
 {
 	static pthread_mutex_t	mutex;
 
