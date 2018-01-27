@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-t_block	*get_block(void *data, t_block *block)
+t_block			*get_block(void *data, t_block *block)
 {
 	t_block *ptr;
 
@@ -26,7 +26,7 @@ t_block	*get_block(void *data, t_block *block)
 	return (NULL);
 }
 
-void	create_realloc(t_block *block, size_t size, size_t dispo)
+void			create_realloc(t_block *block, size_t size, size_t dispo)
 {
 	t_block *tmp;
 
@@ -38,12 +38,13 @@ void	create_realloc(t_block *block, size_t size, size_t dispo)
 	block->next->block_size = dispo - size - sizeof(t_block);
 }
 
-size_t	realloc_block(void *ptr, size_t i, t_page *page)
+long long int	realloc_block(void *ptr, size_t i, t_page *page)
 {
 	t_block *block;
 	size_t	dispo;
 
-	block = get_block(ptr, page->first_block);
+	if ((block = get_block(ptr, page->first_block)) == NULL)
+		return (-1);
 	if (block->block_size >= i)
 		return (0);
 	if (block->next && block->next->is_free)

@@ -4,14 +4,11 @@
 
 int			main(void)
 {
-	char	*addr;
-	char	*test;
+  char *addr; 
 
-	addr = malloc(16);
-	free(NULL);
-	free((void *)addr + 5);
-	test = realloc((void *)addr + 5, 10);
-	if (test == NULL)
-		ft_putstr("Bonjours\n", 1);
-	return (0);
+  addr = malloc(16); 
+  free(NULL); 
+  free((void *)addr + 5); 
+  if (realloc((void *)addr + 5, 10) == NULL) 
+  	ft_putstr("Bonjours\n", 1); 
 }

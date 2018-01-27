@@ -56,7 +56,7 @@ void			*use_g_small(size_t size, t_book *b);
 void			*use_g_large(size_t size, t_book *b);
 void			free_block(t_page *page, void *data);
 t_page			*is_in_book(void *addr, t_book *book);
-size_t			realloc_block(void *d, size_t i, t_page *b);
+long long int	realloc_block(void *d, size_t i, t_page *b);
 t_block			*create_block(t_block *old, size_t size);
 void			delete_page(t_book *book, t_page *page);
 t_block			*get_block(void *data, t_block *block);

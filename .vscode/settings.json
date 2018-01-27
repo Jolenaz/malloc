@@ -8,5 +8,5 @@
 	},
 	"C_Cpp.intelliSenseEngineFallback": "Disabled",
 	"C_Cpp.errorSquiggles": "Disabled",
-	"editor.lineNumbers": "on"
+	"editor.lineNumbers": "relative"
 }

@@ -65,19 +65,24 @@ void	*return_unlock(void *ret, pthread_mutex_t *mutex)
 	return (ret);
 }
 
-void	*realloc(void *ptr, size_t i)
+void	print_realloc_info(size_t i, void *ptr)
 {
-	t_page					*page;
-	void					*ret;
-	size_t					mem_to_copy;
-	static pthread_mutex_t	mutex;
-
-	mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
-	pthread_mutex_lock(&mutex);
 	ft_putstr("realloc for :", g_debug_flag);
 	ft_putnbr_hex((unsigned long long)ptr, g_debug_flag);
 	ft_putstr(" , ", g_debug_flag);
 	ft_putnbr_endl(i, g_debug_flag);
+}
+
+void	*realloc(void *ptr, size_t i)
+{
+	t_page					*page;
+	void					*ret;
+	long long int			mem_to_copy;
+	static pthread_mutex_t	mutex;
+
+	mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
+	pthread_mutex_lock(&mutex);
+	print_realloc_info(i, ptr);
 	if (i == 0)
 	{
 		free(ptr);
@@ -85,9 +90,10 @@ void	*realloc(void *ptr, size_t i)
 	}
 	if (ptr == NULL || (page = is_in_book(ptr, &g_book)) == NULL)
 		return (return_unlock(malloc(i), &mutex));
-	mem_to_copy = realloc_block(ptr, i, page);
-	if (mem_to_copy == 0)
+	if ((mem_to_copy = realloc_block(ptr, i, page)) == 0)
 		return (return_unlock(ptr, &mutex));
+	else if (mem_to_copy == -1)
+		return (NULL);
 	ret = malloc(i);
 	ft_memcpy(ret, ptr, mem_to_copy);
 	free(ptr);
